@@ -3,12 +3,12 @@ using UnityEngine.InputSystem;
 
 public class Player2DController : MonoBehaviour
 {
-    public float speed = 5.0f; // ¤ÇÒÁàÃçÇã¹¡ÒÃà´Ô¹
-    public float jumpForce = 450f; // áÃ§¡ÃÐâ´´
+    public float speed = 5.0f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã¹¡ï¿½ï¿½ï¿½Ô¹
+    public float jumpForce = 450f; // ï¿½Ã§ï¿½ï¿½ï¿½â´´
 
-    private Rigidbody2D _rb; // ¿ÔÊÔ¡Êì
-    private float _moveInput; // ¡ÓË¹´·ÔÈ·Ò§¡ÒÃà´Ô¹ A = (-1), D = 1 / «éÒÂ, ¢ÇÒ
-    private bool _isGrounded; // _isGrounded àªç¤ÇèÒÍÂÙè·Õè¾×é¹ÁÑéÂ??
+    private Rigidbody2D _rb; // ï¿½ï¿½ï¿½Ô¡ï¿½ï¿½
+    private float _moveInput; // ï¿½ï¿½Ë¹ï¿½ï¿½ï¿½È·Ò§ï¿½ï¿½ï¿½ï¿½Ô¹ A = (-1), D = 1 / ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½
+    private bool _isGrounded; // _isGrounded ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??
     private SpriteRenderer _spriteRenderer;
     void Start()
     {
@@ -20,16 +20,16 @@ public class Player2DController : MonoBehaviour
     {
         if (Keyboard.current != null)
         {
-            _moveInput = (Keyboard.current.dKey.isPressed ? 1 : 0) - (Keyboard.current.aKey.isPressed ? 1:0); // ¡´ A, D ¤éÒ§
+            _moveInput = (Keyboard.current.dKey.isPressed ? 1 : 0) - (Keyboard.current.aKey.isPressed ? 1:0); // ï¿½ï¿½ A, D ï¿½ï¿½Ò§
         }
-        _rb.linearVelocity = new Vector2(_moveInput * speed, _rb.linearVelocity.y); // ·ÔÈ·Ò§ X * ¤ÇÒÁàÃçÇ // Y ¤§¤ÇÒÁàÃçÇà´ÔÁäÇé
+        _rb.linearVelocity = new Vector2(_moveInput * speed, _rb.linearVelocity.y); // ï¿½ï¿½È·Ò§ X * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ // Y ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
         if (_moveInput < 0) { _spriteRenderer.flipX = true; }
         else if (_moveInput > 0) { _spriteRenderer.flipX = false;}
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && _isGrounded) // ¡´ Space ·Õà´ÕÂÇ áÅÐ µéÍ§ÍÂÙè·Õè¾×é¹
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && _isGrounded) // ï¿½ï¿½ Space ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Í§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
-            _rb.AddForce(new Vector2(_rb.linearVelocity.x, jumpForce)); // ¤§áÃ§á¡¹ X äÇé à¾ÔèÁáÃ§â´´á¡¹ Y
+            _rb.AddForce(new Vector2(_rb.linearVelocity.x, jumpForce)); // ï¿½ï¿½ï¿½Ã§á¡¹ X ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã§â´´á¡¹ Y
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
